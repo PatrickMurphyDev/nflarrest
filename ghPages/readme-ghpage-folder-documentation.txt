@@ -1,2 +1,0 @@
-This folder contains a git submodule of the gh-pages branch of this same repo. It contains the files that are presented on the live site.
-Use the build script node BuildAllDBMinify_DW.js (publish, allfiles, production)
