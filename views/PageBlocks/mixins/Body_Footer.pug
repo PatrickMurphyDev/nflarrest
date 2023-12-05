@@ -3,7 +3,7 @@ mixin BodyFooter(pageType="Detail",pageTitle="Team",showLoadingBar=true)
     if pageType == "Index"
         footer
             | Made By 
-            a(href='https://www.patrickmurphy.dev' title='Want to see my Resume?') Patrick Murphy
+            a(href='https://www.linkedin.com/in/patrick-murphy-dev/' title='Want to see my Resume?') Patrick Murphy
             |  | 
             a(href='privacypolicy.htm') Privacy Policy
             | &#x9;&#x9;&#x9;&#x9;| 
@@ -15,7 +15,7 @@ mixin BodyFooter(pageType="Detail",pageTitle="Team",showLoadingBar=true)
             include ../DonateButton.pug
     if pageType != "Index"
         footer
-            span <a href="https://nflarrest.net/">NFLArrest Home</a> | &copy; 2022 <a href="https://patrickmurphy.dev">Patrick Murphy</a> | <a href="https://nflarrest.net/Methodology.html">Data Methodology</a> | <span id="updateDateFooter"></span>
+            span <a href="https://nflarrest.net/">NFLArrest Home</a> | &copy; 2022 <a href="https://www.linkedin.com/in/patrick-murphy-dev/">Patrick Murphy</a> | <a href="https://nflarrest.net/Methodology.html">Data Methodology</a> | <span id="updateDateFooter"></span>
             include ../DonateButton.pug
     if showLoadingBar
         include ../LoadingBar.pug
