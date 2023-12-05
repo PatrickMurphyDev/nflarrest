@@ -9,7 +9,7 @@ class IndexPage extends DataDrivenWebPage {
         this.StyleManager.loadCSS('css/vendor/pagination.css');
         
         // define class member variables
-        this.MeterOrRecent = Math.random() > 0.5; // use arrest meter or most recent arrest card on page bool
+        this.MeterOrRecent = false; //Math.random() > 0.5; // use arrest meter or most recent arrest card on page bool
         this.detail_page_active = true; // option to use detail page or not, always set to true now that they are active
         
         //this.DateRangeControl = new DateRangeControl(this);
