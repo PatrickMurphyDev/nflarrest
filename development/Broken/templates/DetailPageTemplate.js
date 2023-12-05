@@ -40,7 +40,7 @@ html_string.push('<body>' +
 '				<img src="images/logo-transparent.png" alt="NFL Arrest Logo" height="30" /></a>' +
 '			<a href="http://nflarrest.net">' +
 '				<h1 style="margin-top:0px;">' +
-'					NFL<span>Arrest</span>.com' +
+'					NFL<span>Arrest</span>.net' +
 '				</h1>' +
 '			</a>' +
 '			<a href="https://twitter.com/share" class="twitter-share-button twitter_Btn" data-url="http://nflarrest.net" data-text="Explore the arrest records of Football Players, find the most common crimes for your football team.">Tweet</a>' +
