@@ -66,7 +66,7 @@ function loadingFinished(){
 };
 
 function getOverallChartData(callback){
-    $.getJSON('http://nflarrest.com/api/overall/customStackedBar.php?bar_col='+$('#bar_col').val()+'&stack_col='+$('#stack_col').val()+'&start_date='+dateRangeNFL.getStart()+'&end_date='+dateRangeNFL.getEnd(), callback);
+    $.getJSON('http://nflarrest.net/api/overall/customStackedBar.php?bar_col='+$('#bar_col').val()+'&stack_col='+$('#stack_col').val()+'&start_date='+dateRangeNFL.getStart()+'&end_date='+dateRangeNFL.getEnd(), callback);
 }
 
 function setupChart(){

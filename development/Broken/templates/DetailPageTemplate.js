@@ -9,7 +9,7 @@ html_string.push('<!doctype html>' +
 //	<meta name="description" content="<?php echo $page_details['description']; ?>">
 '	<meta name="author" content="Patrick Murphy">' +
 '	<meta name="viewport" content="width=device-width, initial-scale=1">' +
-'	<base href="http://www.nflarrest.com/">' +
+'	<base href="http://www.nflarrest.net/">' +
 '	<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-touch-icon-57x57.png">' +
 '	<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-touch-icon-60x60.png">' +
 '	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-touch-icon-72x72.png">' +
@@ -36,15 +36,15 @@ html_string.push('<!doctype html>' +
 html_string.push('<body>' +
 '	<div class="container">' +
 '		<header>' +
-'			<a href="http://nflarrest.com" class="logo">' +
+'			<a href="http://nflarrest.net" class="logo">' +
 '				<img src="images/logo-transparent.png" alt="NFL Arrest Logo" height="30" /></a>' +
-'			<a href="http://nflarrest.com">' +
+'			<a href="http://nflarrest.net">' +
 '				<h1 style="margin-top:0px;">' +
 '					NFL<span>Arrest</span>.com' +
 '				</h1>' +
 '			</a>' +
-'			<a href="https://twitter.com/share" class="twitter-share-button twitter_Btn" data-url="http://nflarrest.com" data-text="Explore the arrest records of Football Players, find the most common crimes for your football team.">Tweet</a>' +
-'			<div class="fb-share-button fb_Btn" data-href="http://NFLArrest.com" data-layout="button_count"></div>' +
+'			<a href="https://twitter.com/share" class="twitter-share-button twitter_Btn" data-url="http://nflarrest.net" data-text="Explore the arrest records of Football Players, find the most common crimes for your football team.">Tweet</a>' +
+'			<div class="fb-share-button fb_Btn" data-href="http://nflarrest.net" data-layout="button_count"></div>' +
 '			<div class="dateRangeControl">' +
 '				<button id="filters-open-button">F</button><span class="title">Date Range:</span> <input id="dateRangeJquery" name="dateRangeJquery">' +
 '			</div>' +

@@ -140,7 +140,7 @@ function loadingFinished() {
 
 function setupArrestOMeter(d) {
 	var animate = true;
-	//$.getJSON('http://nflarrest.com/api/v1/meter', function (data) {
+	//$.getJSON('http://nflarrest.net/api/v1/meter', function (data) {
 	data_controller.getArrestMeter(function (data) {
 		var daysSince = data['current']['daysSince'],
 			recordAlltime = data['alltime']['record'],
@@ -228,19 +228,19 @@ function changeTopChart() {
 function getOverallChartData(callback) {
 	if (mainChartStyleID == 0) {
 		data_controller.getOverallChart("Crime","Team Code", "Team Code", "DESC", callback);
-		//$.getJSON("http://nflarrest.com/api/overall/customStackedBar.php?bar_col=Year&stack_col=Crime&bar_order_dir=ASC&order_dir=DESC&bar_order_col=Year&legend_order_col=Measure&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
+		//$.getJSON("http://nflarrest.net/api/overall/customStackedBar.php?bar_col=Year&stack_col=Crime&bar_order_dir=ASC&order_dir=DESC&bar_order_col=Year&legend_order_col=Measure&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
 	} else if (mainChartStyleID == 1) {
 		data_controller.getOverallChart("Crime","Year", "Year", "ASC", callback);
-		//$.getJSON("http://nflarrest.com/api/overall/topTeams.php?graph=true&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
+		//$.getJSON("http://nflarrest.net/api/overall/topTeams.php?graph=true&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
 	} else if (mainChartStyleID == 3) {
 		data_controller.getOverallChart("Crime","Day", "Day", "ASC", callback);
-		//$.getJSON("http://nflarrest.com/api/overall/customStackedBar.php?bar_col=Day&stack_col=Crime&bar_order_dir=ASC&order_dir=DESC&bar_order_col=DayOrder&legend_order_col=Measure&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
+		//$.getJSON("http://nflarrest.net/api/overall/customStackedBar.php?bar_col=Day&stack_col=Crime&bar_order_dir=ASC&order_dir=DESC&bar_order_col=DayOrder&legend_order_col=Measure&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
 	} else if (mainChartStyleID == 2) {
 		data_controller.getOverallChart("SeasonState","Season", "Season", "ASC", callback);
-		//$.getJSON("http://nflarrest.com/api/v1/ArrestsSeasonState?start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
+		//$.getJSON("http://nflarrest.net/api/v1/ArrestsSeasonState?start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
 	} else if (mainChartStyleID == 4) {
 		data_controller.getOverallChart("Division","Year", "Year", "ASC", callback);
-		//$.getJSON("http://nflarrest.com/api/overall/conferenceDivisionByYear.php?graph=true&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
+		//$.getJSON("http://nflarrest.net/api/overall/conferenceDivisionByYear.php?graph=true&start_date=" + dateRangeNFL.getStart() + "&end_date=" + dateRangeNFL.getEnd(), callback);
 	}
 }
 
@@ -305,7 +305,7 @@ function load_top_lists(first, replace) {
 	if (first != 'first') {
 		googleTracking.sendTrackEvent('TopLists', 'Load Next Page');
 	}
-	var url = 'http://nflarrest.com/api/overall/topLists.php?limit=5&start_pos=' + last_start_pos + '&start_date=' + dateRangeNFL.getStart() + '&end_date=' + dateRangeNFL.getEnd();
+	var url = 'http://nflarrest.net/api/overall/topLists.php?limit=5&start_pos=' + last_start_pos + '&start_date=' + dateRangeNFL.getStart() + '&end_date=' + dateRangeNFL.getEnd();
 	//$.getJSON(url, function (data) {
 	data_controller.getTopLists(last_start_pos, dateRangeNFL.getStart(), dateRangeNFL.getEnd(), function (data) {
 		var crimes_list = data[0],

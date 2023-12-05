@@ -3,7 +3,7 @@ var dummyFieldForTesting = {
     "build_release_id": 84,
     "build_environment_id": 1,
     "build_environment_name": "Development",
-    "build_environment_description": "Development Environment, nflarrest.com/development/",
+    "build_environment_description": "Development Environment, nflarrest.net/development/",
     "build_release_type_id": 3,
     "build_release_type_name": "Development WIP",
     "build_release_type_description": "A release to the development environment without a version number or message",
