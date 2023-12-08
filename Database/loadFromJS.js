@@ -3,7 +3,7 @@ var data = [{"arrest_stats_id":33,"Date":"2000-09-07T07:00:00.000Z","Team":"JAC"
 
 var crime_category_map = {};
 var new_arrests = [];
-var last_date = {Year: 2018, Month: 4, Day: 15};
+var last_date = {Year: 1995, Month: 6, Day: 20};
 /*
 for(var i = 0; i < data.length; i++){
     var categoryToCrime = data[i].Category.toLocaleLowerCase() + "%" + data[i].general_category_id;
@@ -34,7 +34,7 @@ console.log(query);
 
 */
 
-var query2 = "INSERT INTO `nflarrestdw`.`stg_arrests` (`Date`,`Team`,`Name`,`Position`,`Encounter`,`Category`,`Description`,`Outcome`) VALUES"
+var query2 = "INSERT INTO `stg_arrests` (`Date`,`Team`,`Name`,`Position`,`Encounter`,`Category`,`Description`,`Outcome`) VALUES"
 for(var k = 0; k < data.length; k++){
     var a = data[k];
     if(k > 0) {

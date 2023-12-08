@@ -22,7 +22,7 @@ BEGIN
     DROP TABLE IF EXISTS numbers;
 
 	###### date table
-	DROP TABLE IF EXISTS dates;
+	DROP TABLE IF EXISTS dim_date;
 	CREATE TABLE dim_date (
 	  dim_date_id          BIGINT PRIMARY KEY, 
 	  date             DATE NOT NULL,
@@ -39,14 +39,14 @@ BEGIN
 	);
 
 	###### populate it with days
-	INSERT INTO dates (dim_date_id, date)
+	INSERT INTO dim_date (dim_date_id, date)
 	SELECT number, DATE_ADD( '2000-01-01', INTERVAL number DAY )
 	  FROM numbers
-	  WHERE DATE_ADD( '2000-01-01', INTERVAL number DAY ) BETWEEN '2000-01-01' AND '2021-10-31'
+	  WHERE DATE_ADD( '2000-01-01', INTERVAL number DAY ) BETWEEN '2000-01-01' AND '2023-12-07'
 	  ORDER BY number;
 
 	###### fill in other rows
-	UPDATE dates SET
+	UPDATE dim_date SET
 	  timestamp =   UNIX_TIMESTAMP(date),
 	  day_of_week = DATE_FORMAT( date, "%W" ),
 	  weekend =     IF( DATE_FORMAT( date, "%W" ) IN ('Saturday','Sunday'), 'Weekend', 'Weekday'),
@@ -54,7 +54,7 @@ BEGIN
 	  year =        DATE_FORMAT( date, "%Y" ),
 	  month_day =   DATE_FORMAT( date, "%d" );
 
-	UPDATE dates SET week_starting_monday = DATE_FORMAT(date,'%v');
+	UPDATE dim_date SET week_starting_monday = DATE_FORMAT(date,'%v');
 
 	## cleanup working tables
 	DROP TABLE IF EXISTS numbers_small;
