@@ -1,4 +1,4 @@
- //sets the table that standard queries pull from 
+/* //sets the table that standard queries pull from 
 $DB_MAIN_TABLE = 'ArrestsCacheTable';
 
 $crimes_categories_result = $db->query('SELECT * FROM general_category');
@@ -275,3 +275,4 @@ foreach($player_list as $row){
 			</div>
 		</div>
 	</div>
+	*/

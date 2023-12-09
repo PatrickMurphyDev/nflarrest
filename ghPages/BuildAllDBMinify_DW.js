@@ -63,8 +63,8 @@ var runOption_publish_mode_Update = false;
 var runOption_Commit_Message_Flag = false;
 var runOption_Release_Flag = false;
 var runOption_Skip_Questions = false;
-var runOption_Skip_Screenshot = false;
-var runOption_Skip_USAToday = false;
+var runOption_Skip_Screenshot = true;
+var runOption_Skip_USAToday = true;
 var runOption_migrate_files_prod = false;
 
 // --- User Input Variables --- //
