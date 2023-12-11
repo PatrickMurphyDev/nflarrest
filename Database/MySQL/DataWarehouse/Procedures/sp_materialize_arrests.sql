@@ -84,7 +84,8 @@ FROM fct_arrests as fa
     INNER JOIN dim_day as dd ON dd.day_key = fa.dim_date_id
     INNER JOIN dim_team as dt ON dt.dim_team_id = fa.dim_team_id
     INNER JOIN dim_player_position as dpp ON dpp.dim_player_position_id = fa.dim_player_position_id
-    INNER JOIN dim_crime as dc ON dc.dim_crime_id = fa.dim_crime_id;
+    INNER JOIN dim_crime as dc ON dc.dim_crime_id = fa.dim_crime_id
+    WHERE dt.team_code not in ("FA", "FA ");
 -- commit;
 -- increase the value of the @date variable by 1 day
 commit;

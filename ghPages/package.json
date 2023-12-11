@@ -3,6 +3,7 @@
     "diff-file-tree": "^2.5.1",
     "express": "^4.18.2",
     "mysql": "^2.18.1",
+    "mysql2": "^3.6.5",
     "mysqldump": "^3.2.0",
     "node-minify": "^3.5.1",
     "pug": "^3.0.2",

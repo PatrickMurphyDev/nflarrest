@@ -1,7 +1,7 @@
 // --- Include Refrenced Packages --- //
 var fs = require('fs');
 var UglifyJS = require("uglify-js");
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var node_minify = require('node-minify');
 var simple_git = require('simple-git');
 var readline = require('readline');
@@ -94,20 +94,28 @@ var mysqldump_path = '../Database/backup/lastGHPagesUpdateDump.sql';
 var cacheUglifyJSFileName1 = "./cacheJSMinifyNamesIndex.json";
 var cacheUglifyJSFileName2 = "./cacheJSMinifyNamesDetailPage.json";
 var JS_filenames_index = ['js/LoadingBarManager.js',
-    'js/modules/Module.Module.js',
+'js/modules/Module.Module.js',
+'js/modules/ModuleContainer.Module.js',
+'js/modules/DialogModuleContainer.Module.js',
+    'js/model/FiltersModel.js',
     'js/modules/DataTable.Module.js',
     'js/modules/DataTableColumns.Module.js',
+    'js/modules/DialogWindowColumn.Module.js',
     'js/modules/ArrestCard.Module.js',
+    'js/modules/DataFilter.Module.js',
+    'js/modules/DataFilterControl.Module.js',
+    'js/modules/DataFilterSection.Module.js',
     'js/data/lastUpdate_data.js',
     'js/DataController.js',
     'js/Utilities.js',
     'js/GoogleAnalyticsManager.js',
-    'js/WebPage.js',
-    'js/charts/Chart.js',
-    'js/IndexPage.js',
+    'js/WebPage.class.js',
+    'js/DataDrivenWebPage.class.js',
+    //'js/charts/Chart.js',
+    'js/pages/IndexPage.class.js',
     'js/TopLists.js',
-    'js/MainChart.js',
-    'js/charts/stackedBarChart.js',
+    //'js/MainChart.js',
+    //'js/charts/stackedBarChart.js',
     'js/DateRangeControl.js',
     'js/StyleSheetManager.js'
 ];
@@ -119,15 +127,16 @@ var JS_filenames_detail = [
     'js/LoadingBarManager.js',
     'js/Utilities.js',
     'js/GoogleAnalyticsManager.js',
-    'js/WebPage.js',
-    'js/DetailPage.js',
+    'js/WebPage.class.js',
+    'js/pages/DetailPage.class.js',
     'js/model/FiltersModel.js',
-    'js/FiltersControl.js',
     'js/charts/Chart.js',
     'js/charts/DonutChart.js',
     'js/modules/Module.Module.js',
     'js/modules/DataTable.Module.js',
     'js/modules/DataTableColumns.Module.js',
+    'js/modules/DataFilter.Module.js',
+    'js/modules/DataFilterControl.Module.js',
     'js/modules/ArrestCard.Module.js',
     'js/data/lastUpdate_data.js',
     'js/DataController.js',
@@ -149,9 +158,10 @@ var CSS_filenames = ['css/styles-modular.css',
     'css/modules/styles-arrest-table.css',
     'css/modules/styles-kpi.css',
     'css/modules/styles-mobile.css',
-    'css/modules/styles-newsletter.css'
+    'css/modules/styles-filters.css'
 ];
 
+//'css/modules/styles-newsletter.css'
 // any files that are new that have not been added to production environment, these files need to be moved to production before prod release
 var CSS_filenames_development = [];
 
@@ -260,7 +270,7 @@ function getEnvironmentDBIndex() {
 
 function getLatestVersion(mysql2, callback) {
 
-    var strQuery = "SELECT build_release_version FROM nflarrestdw.build_release WHERE build_release_id = (SELECT MAX(build_release_id) FROM nflarrestdw.build_release WHERE build_release_version <> 'x.x.x')"; //AND build_environment_id = " + getEnvironmentDBIndex() + ")";
+    var strQuery = "SELECT build_release_version FROM nflarrest.build_release WHERE build_release_id = (SELECT MAX(build_release_id) FROM nflarrest.build_release WHERE build_release_version <> 'x.x.x')"; //AND build_environment_id = " + getEnvironmentDBIndex() + ")";
     mysql2.query(strQuery, (error2, results2, fields2) => {
         if (error2) {
             console.log(error2);
@@ -332,7 +342,7 @@ function insertBuildRelease(mysql, desc, version) {
         build_release_date: reldate.toISOString().split('T')[0]
     };
 
-    var strQuery = "INSERT INTO nflarrestdw.build_release SET ?";
+    var strQuery = "INSERT INTO nflarrest.build_release SET ?";
     mysql.query(strQuery, release, (error2, results2, fields2) => {
         if (error2) {
             console.log(error2);
@@ -365,7 +375,7 @@ function insertBuildReleaseDetail(mysql, releaseID, detailType, val, callback) {
         build_release_detail_value: val
     };
 
-    var strQuery = "INSERT INTO nflarrestdw.build_release_detail SET ?";
+    var strQuery = "INSERT INTO nflarrest.build_release_detail SET ?";
     mysql.query(strQuery, release, (error2, results2, fields2) => {
         if (error2) {
             console.log(error2);
