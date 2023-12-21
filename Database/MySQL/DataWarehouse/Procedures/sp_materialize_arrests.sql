@@ -75,14 +75,15 @@ BEGIN
     dd.day_num as `Day`,
     dd.day_of_week_name as `Day_of_Week`,
     dd.day_of_week as `Day_of_Week_int`,
-    0 as `YearToDate`, -- year to date should not be MATERIALIZED
-    0 as `DaysSince`, -- daysSince should not be MATERIALIZED
+    (DAYOFYEAR(NOW()) > dd.day_of_year) as `YearToDate`, -- year to date should not be MATERIALIZED
+    DATEDIFF(NOW(), dd.date) as `DaysSince`, -- daysSince should not be MATERIALIZED
     0 as `DaysToLastArrest`, -- should not be MATERIALIZED
     0 as `DaysToLastCrimeArrest`, -- should not be MATERIALIZED
     0 as `DaysToLastTeamArrest` -- should not be MATERIALIZED
 FROM fct_arrests as fa 
     INNER JOIN dim_day as dd ON dd.day_key = fa.dim_date_id
-    INNER JOIN dim_team as dt ON dt.dim_team_id = fa.dim_team_id
+	LEFT JOIN dim_team_change as dtc on fa.dim_team_id = dtc.dim_team_id_old
+    INNER JOIN dim_team as dt ON dt.dim_team_id = COALESCE(dtc.dim_team_id_new, fa.dim_team_id)
     INNER JOIN dim_player_position as dpp ON dpp.dim_player_position_id = fa.dim_player_position_id
     INNER JOIN dim_crime as dc ON dc.dim_crime_id = fa.dim_crime_id
     WHERE dt.team_code not in ("FA", "FA ");
