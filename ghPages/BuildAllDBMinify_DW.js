@@ -16,25 +16,6 @@ var BuildFileDiffModule = require('./BuildFileDiffModule');
 var git = simple_git('./nflarrest/');
 var mysql_user_options = dbConfig;
 
-
-// --- Add Run Node Process Functions --- //
-// spawn node child process
-function runNode(path, cb1, cb) {
-    shell.exec('node ' + path, function (code, stdout, stderr) {
-        cb(code, stdout, stderr, cb1);
-    });
-}
-
-// standard default callback for node child process
-function nodeCB(code, stdout, stderr, cb) {
-    if (code !== 0) {
-        console.log('Program stderr:', stderr);
-        shell.exit(1);
-    } else {
-        cb();
-    }
-}
-
 // --- Setup Enum Variables --- //
 var runOption_Environment_Details_enum = [{
     Environment: "development",
@@ -53,7 +34,7 @@ var runOption_Release_Detail_Types_enum = {
 var runOption_Release_Detail_Types_Names_enum = ["FileChangeCount", "FileChangedPath", "CommitHash", "ArrestCount"];
 
 // --- Script Arguments --- //
-var runOption_Environment = 0;
+var runOption_Environment = 1; // 0 = dev, 1 = prod
 var runOption_Generate_CSS_Flag = true;
 var runOption_Generate_JS_Flag = true;
 var runOption_UseModular_CSS_Flag = true;
@@ -178,6 +159,24 @@ var Expected_Build_Change_FileList = [
 var BuildPug = new BuildPUGViews('views/',getEnvPath);
 var BuildFileDiff = new BuildFileDiffModule();
 BuildFileDiff.init();
+
+// --- Add Run Node Process Functions --- //
+// spawn node child process
+function runNode(path, cb1, cb) {
+    shell.exec('node ' + path, function (code, stdout, stderr) {
+        cb(code, stdout, stderr, cb1);
+    });
+}
+
+// standard default callback for node child process
+function nodeCB(code, stdout, stderr, cb) {
+    if (code !== 0) {
+        console.log('Program stderr:', stderr);
+        shell.exit(1);
+    } else {
+        cb();
+    }
+}
 
 function main_is_development_env() {
     return runOption_Environment_Details_enum[runOption_Environment].Environment === 'development';
